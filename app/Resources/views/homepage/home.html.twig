@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div style="text-align: center;">
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Shopping System Cart</h1>
+            <p>This is a simple Shopping Cart System. Here you can buy and post items. For more usability, you can register.</p>
+            <p><a class="btn btn-primary btn-lg" href="/register" role="button">Register &raquo;</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>History of SSC</h2>
+                <p>The development of web shop systems took place right after the Internet became a mass medium. This was a result of the launch of the browser Mosaic in 1993 and Netscape in 1994. It created an environment in which web shops were possible.</p>
+                <p><a class="btn btn-default" href="https://en.wikipedia.org/wiki/Shopping_cart_software#History" role="button">More History &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Technical definition</h2>
+                <p>These applications typically provide a means of capturing a client's payment information, but in the case of a credit card they rely on the software module of the secure gateway provider, in conjunction with the secure payment gateway, in order to conduct secure credit card transactions online.</p>
+                <p><a class="btn btn-default" href="https://en.wikipedia.org/wiki/Shopping_cart_software#Technical_definition" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>PCI Compliance</h2>
+                <p>The PCI security standards are a blanket of regulations set in place to safeguard payment account data security. The council that develops and monitors these regulations is composed of the leading providers in the payment industry: American Express, Discover Financial Services, JCB International, MasterCard Worldwide, and Visa Inc. Essentially</p>
+                <p><a class="btn btn-default" href="https://en.wikipedia.org/wiki/Shopping_cart_software#PCI_Compliance" role="button">View details &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
