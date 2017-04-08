@@ -7,10 +7,13 @@ security:
             AppBundle\Entity\User: bcrypt
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory: ~
+        our_db_provider:
+              entity:
+                 class: AppBundle:User
+                 property: username
 
     firewalls:
+
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -18,10 +21,15 @@ security:
 
         main:
             anonymous: ~
+            provider: our_db_provider
+
             form_login:
-                            login_path: login
-                            check_path: login
-            # activate different ways to authenticate
+                        login_path: our_login
+                        check_path: our_login
+            logout:
+                        path: /logout
+                        target: /home
+# activate different ways to authenticate
 
             # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
             #http_basic: ~
