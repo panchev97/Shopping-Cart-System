@@ -55,7 +55,6 @@ class User implements UserInterface
      *
      * @return int
      *
-     * @Assert\NotBlank()
      */
     public function getId()
     {

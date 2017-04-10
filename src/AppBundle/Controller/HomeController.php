@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -17,12 +18,13 @@ class HomeController extends Controller
     {
         return $this->render('base.html.twig');
     }
+
     /**
      * @Route("/home", name="homepage")
-     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
+     * @internal param Request $request
      */
-    public function homeAction(Request $request)
+    public function homeAction()
     {
         return $this->render('homepage/home.html.twig');
     }
