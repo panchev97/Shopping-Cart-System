@@ -22,9 +22,6 @@ security:
         main:
             anonymous: ~
             provider: our_db_provider
-            remember_me:
-                            secret:   '%secret%'
-                            lifetime: 604800 # 1 week in seconds
             form_login:
                         login_path: our_login
                         check_path: our_login
