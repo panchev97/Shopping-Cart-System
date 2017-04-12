@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
+
 {% block body %}
     <div style="text-align: center;">
+        {% if error %}
+            <div><h1>{{ error.messageKey|trans(error.messageData, 'security') }}</h1></div>
+        {% endif %}
         <div class="well">
             <div class="container">
                 <div class="col-md-4 col-md-offset-4">

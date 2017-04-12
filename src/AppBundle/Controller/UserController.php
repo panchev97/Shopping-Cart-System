@@ -49,37 +49,6 @@ class UserController extends Controller
     public function editProfileAction($id, Request $request)
     {
 
-        $user = $this->getDoctrine()
-                     ->getRepository('AppBundle:User')
-                     ->find($id);
 
-        $form = $this->createForm(UserType::class, $user);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            //Get Data..
-            $username = $form['username']->getData();
-            $name = $form['name']->getData();
-
-            $em = $this->getDoctrine()->getManager();
-            $user = $em->getRepository('AppBundle:User')
-                        ->find($id);
-
-            $password = $this->get('security.password_encoder')
-                             ->encodePassword($user, $user->getPassword());
-
-            $user->setUsername($username);
-            $user->setName($name);
-            $user->setPassword($password);
-
-            $em->flush();
-
-            return $this->redirectToRoute('products');
-        }
-
-        return $this->render('user/profile.html.twig', array(
-            'form' => $form->createView()
-        ));
     }
 }
