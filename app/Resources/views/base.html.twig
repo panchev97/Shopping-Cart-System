@@ -26,10 +26,9 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     {% if app.user %}
-                        <li><a href="/home"><b>Home</b><span class="sr-only">(current)</span></a></li>
                         <li><a href="/products"><b>Products </b></a> </li>
                         <li><a href="/products/create"><b>Add Product</b></a> </li>
-                        <li><a href="#"><b>My Profile</b></a> </li>
+                        <li><a href="/user/{{ app.user.id }}"><b>Edit Profile</b></a> </li>
                         <li><a href="#"><b>My Cart</b></a> </li>
                         <li><a href="/logout"><b>Logout</b></a> </li>
                     {% else %}
