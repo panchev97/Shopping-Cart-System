@@ -48,7 +48,6 @@ class UserController extends Controller
      */
     public function editProfileAction($id, Request $request)
     {
-
-
+        return null;
     }
 }

@@ -1,44 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-
-    <nav class="navbar navbar-inverse bg-inverse">
+    <nav class="navbar navbar-inverse">
         <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/home"><b>Shopping Cart System</b></a>
+                <a class="navbar-brand" href="/home">Shopping Cart System</a>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    {% if app.user %}
-                        <li><a href="/products"><b>Products </b></a> </li>
-                        <li><a href="/products/create"><b>Add Product</b></a> </li>
-                        <li><a href="/user/{{ app.user.id }}"><b>Edit Profile</b></a> </li>
-                        <li><a href="#"><b>My Cart</b></a> </li>
-                        <li><a href="/logout"><b>Logout</b></a> </li>
-                    {% else %}
-                        <li><a href="/home"><b>Home</b><span class="sr-only">(current)</span></a></li>
-                        <li><a href="/login"><b>Login</b></a></li>
-                        <li><a href="/register"><b>Register</b></a></li>
-                    {% endif %}
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
+            {% if app.user %}
+            <ul class="nav navbar-nav">
+                <li><a href="/products/show">Products</a></li>
+                <li><a href="#">My Profile</a></li>
+                <li><a href="#">My Cart</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/category/add">Add Category</a></li>
+                        <li><a href="/categories/show">List Of Categories</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span>   Logout</a></li>
+            </ul>
+            {% else %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
+        {% endif %}
     </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
