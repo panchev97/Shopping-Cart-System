@@ -26,8 +26,7 @@ security:
                         login_path: our_login
                         check_path: our_login
                         always_use_default_target_path: true
-                        default_target_path: /products
-
+                        default_target_path: /products/show
 
                         username_parameter: _email
                         password_parameter: _password
