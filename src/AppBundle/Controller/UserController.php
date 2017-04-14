@@ -48,36 +48,5 @@ class UserController extends Controller
      */
     public function myProfileAction($id, Request $request)
     {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $user = $this->get('security.context')->getToken()->getUser();
-        $entity = $em->getRepository('AcmeSecurityBundle:User')->find($user->id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find User entity.');
-        }
-
-        $form = $this->createForm(new ProfileType(), $entity);
-
-        $request = $this->getRequest();
-
-        if ($request->getMethod() === 'POST')
-        {
-            $form->bindRequest($request);
-
-            if ($form->isValid()) {
-                $em->persist($entity);
-                $em->flush();
-
-                return $this->redirect($this->generateUrl('profile'));
-            }
-
-            $em->refresh($user); // Add this line
-        }
-
-        return $this->render('', array(
-            'entity'      => $entity,
-            'form'   => $form->createView(),
-        ));
     }
 }
