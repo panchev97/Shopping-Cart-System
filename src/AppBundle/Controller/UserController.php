@@ -26,7 +26,7 @@ class UserController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $user->setRoles(['ROLE_EDITOR']);
+            $user->setRole($user->getDefaultRole());
 
             /** @var UploadedFile $file */
             $file = $user->getImageForm();
@@ -64,5 +64,33 @@ class UserController extends Controller
      */
     public function myProfileAction($id, Request $request)
     {
+        return $this->render('user/profile.html.twig');
     }
+
+    /**
+     * @Route("/user/edit/{id}", name="edit_profile")
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editProfileAction($id, Request $request)
+    {
+
+        return $this->render('user/edit.profile.html.twig');
+    }
+
+    /**
+     * @Route("users/show", name="list_users")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listUsersAction()
+    {
+        $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
+
+        return $this->render('user/list.users.html.twig', array(
+            'users' => $users,
+        ));
+    }
+
+
 }
