@@ -5,6 +5,12 @@ security:
             # Our user class and the algorithm we'll use to encode passwords
             # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
             AppBundle\Entity\User: bcrypt
+
+    access_control:
+         - { path: ^/register , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/login , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/, roles: [ROLE_USER, ROLE_EDITOR, ROLE_ADMIN] }
+
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         our_db_provider:
@@ -32,11 +38,4 @@ security:
                         password_parameter: _password
             logout:
                         path: /logout
-                        target: /login
-# activate different ways to authenticate
-
-            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
-
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
-            #form_login: ~
+                        target: /home

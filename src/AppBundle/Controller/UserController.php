@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
@@ -24,6 +25,21 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $user->setRoles(['ROLE_EDITOR']);
+
+            /** @var UploadedFile $file */
+            $file = $user->getImageForm();
+
+            $filename = md5($user->getName());
+
+            $file->move(
+                $this->get('kernel')->getRootDir() . '/../web/images/users/',
+                $filename
+            );
+
+            $user->setImage($filename);
+
             $password = $this->get('security.password_encoder')
                 ->encodePassword($user, $user->getPassword());
 
