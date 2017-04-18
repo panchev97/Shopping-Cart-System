@@ -78,19 +78,4 @@ class UserController extends Controller
 
         return $this->render('user/edit.profile.html.twig');
     }
-
-    /**
-     * @Route("users/show", name="list_users")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function listUsersAction()
-    {
-        $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
-
-        return $this->render('user/list.users.html.twig', array(
-            'users' => $users,
-        ));
-    }
-
-
 }
