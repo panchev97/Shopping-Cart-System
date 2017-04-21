@@ -75,7 +75,21 @@ class UserController extends Controller
      */
     public function editProfileAction($id, Request $request)
     {
-
         return $this->render('user/edit.profile.html.twig');
+    }
+
+    /**
+     * @Route("/users/show", name="users_show")
+     */
+    public function listUsersAction()
+    {
+        $users = $this
+                     ->getDoctrine()
+                     ->getRepository('AppBundle:User')
+                     ->findAll();
+
+        return $this->render('user/users.show.html.twig', array(
+            'users' => $users
+        ));
     }
 }
