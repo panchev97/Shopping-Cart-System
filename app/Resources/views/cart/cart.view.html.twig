@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div style="text-align: center;">
+        <h1>Products In My Cart</h1>
+    {% for cart_product in cart.cartProducts  %}
+        <div class="row">
+            <div class="col-md-7">
+                <img src="/images/products/{{ cart_product.product.image }}" alt="" width="300" height="250">
+            </div>
+            <div class="col-md-5">
+                <h4><b>Name: </b>{{ cart_product.product.name }}</h4>
+                <h4><b>Price: </b>{{ cart_product.product.price }} €</h4>
+                <h4><b>Description:</b></h4>
+                <p><h4>{{ cart_product.product.description }}</h4>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+    <a href="/products/remove" class="btn btn-danger">Clear Bag</a>
+    </div>
+{% endblock %}
